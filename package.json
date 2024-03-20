@@ -1,7 +1,7 @@
 {
-  "name": "augmenteddevice",
-  "version": "1.0.3",
-  "description": "AugumentedDevice",
+  "name": "heon",
+  "version": "1.0.0",
+  "description": "heon",
   "module": "commonjs",
   "main": "build/main.js",
   "scripts": {
@@ -40,7 +40,7 @@
     "webpack-cli": "^5.1.4"
   },
   "build": {
-    "productName": "AugumentedDevice",
+    "productName": "Heon",
     "asar": true,
     "win": {
       "target": "nsis"
@@ -62,9 +62,9 @@
     },
     "nsis": {
       "oneClick": true,
-      "shortcutName": "AugumentedDevice",
-      "artifactName": "AugumentedDevice ${version}.${ext}",
-      "uninstallDisplayName": "AugumentedDevice"
+      "shortcutName": "Heon",
+      "artifactName": "Heon ${version}.${ext}",
+      "uninstallDisplayName": "Heon"
     },
     "directories": {
       "buildResources": "resources",
