@@ -1,0 +1,75 @@
+{
+  "name": "augmenteddevice",
+  "version": "1.0.3",
+  "description": "AugumentedDevice",
+  "module": "commonjs",
+  "main": "build/main.js",
+  "scripts": {
+    "lint": "echo \"No linting configured\"",
+    "build": "electron-builder build",
+    "build:mac": "export CSC_IDENTITY_AUTO_DISCOVERY=false && DEBUG=electron-builder electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "prebuild": "tsc && copyfiles -f src/index.html build && webpack --config webpack.config.js && copyfiles -f src/style.css build && copyfiles -f src/bookmarks.json build ",
+    "dev": "npm run prebuild && electron ."
+  },
+  "keywords": [],
+  "author": {
+    "name": "codevil",
+    "email": "namhundred@naver.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-localstorage": "^1.0.5",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.3",
+    "@electron-forge/maker-deb": "^6.0.3",
+    "@electron-forge/maker-rpm": "^6.0.3",
+    "@electron-forge/maker-squirrel": "^6.0.3",
+    "@electron-forge/maker-zip": "^6.0.3",
+    "@electron-forge/publisher-github": "^6.0.3",
+    "@types/node": "20.8.0",
+    "copyfiles": "^2.4.1",
+    "electron": "^28.2.3",
+    "electron-builder": "^24.9.1",
+    "electron-builder-notarize": "^1.5.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "build": {
+    "productName": "AugumentedDevice",
+    "asar": true,
+    "win": {
+      "target": "nsis"
+    },
+    "afterSign": "electron-builder-notarize",
+    "appId": "com.heon.browser",
+    "mac": {
+      "hardenedRuntime": true,
+      "entitlements": "./resources/entitlements.mac.plist",
+      "entitlementsInherit": "./resources/entitlements.mac.plist",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "shortcutName": "AugumentedDevice",
+      "artifactName": "AugumentedDevice ${version}.${ext}",
+      "uninstallDisplayName": "AugumentedDevice"
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "./dist/",
+      "app": "."
+    }
+  }
+}

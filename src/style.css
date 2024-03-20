@@ -1,0 +1,314 @@
+:root {
+  --title-height: 34px;
+  --address-width: 70px;
+  --detail-width: 300px;
+  --opacity: 1;
+  --blue-5: rgb(30, 30, 214);
+}
+button {
+  padding: 0;
+}
+body {
+  margin: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.os-mac .title-bar{
+  flex-flow:row-reverse;
+}
+.os-mac .window-icon{
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  margin-left:5px;
+}
+.os-mac #close-browser{
+  background-color: #ff5f57;
+}
+.os-mac #open-browser{
+  background-color:#2860c8;
+}
+
+webview {
+  background-color: rgb(255, 255, 255);
+}
+webview.dark {
+  background-color: rgb(0, 0, 0);
+}
+label {
+  margin-left: 5px;
+}
+.window-icon {
+  width: 45px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.window-icon.close:hover {
+  background-color: red;
+}
+.window-icon:hover {
+  background-color: gray;
+}
+.icon,
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+}
+.icon:not(.inactive):hover {
+  background-color: gray;
+  border-radius: 100%;
+}
+#address {
+  width: calc(var(--detail-width) - var(--address-width));
+  border-radius: var(--address-width);
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 30px;
+  height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgb(226, 226, 226);
+  border: none;
+}
+.address-bar {
+  position: relative;
+}
+
+#bookmark-icon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 0;
+  background: none;
+  border: none;
+  color: black;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+#bookmark-icon:after {
+  content: "☆";
+}
+#bookmark-icon:not(.inactive):after {
+  content: "★";
+}
+.title-bar {
+  place-content: space-between;
+  display: flex;
+  width: 100vw;
+  height: var(--title-height);
+  z-index: 1;
+  background: rgb(243, 243, 243);
+}
+.browser-item {
+  display: flex;
+  align-items: center;
+}
+.title-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 0;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: content-box;
+}
+.title-item:hover {
+  background-color: gray;
+}
+#open-navigation {
+  margin-left: 2px;
+  margin-top: 2px;
+}
+#open-navigation.open ~ .navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1;
+  margin-left: 5px;
+}
+.no-bookmark {
+  color: rgba(0, 0, 0, 0.3);
+}
+.draggable {
+  -webkit-app-region: drag;
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  text-wrap: nowrap;
+  overflow: hidden;
+  padding-left: 5px;
+}
+#browser-color {
+  border: none;
+}
+
+#prev-page{
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgLTk2MCA5NjAgOTYwIiB3aWR0aD0iMjQiPjxwYXRoIGQ9Im0zMTMtNDQwIDIyNCAyMjQtNTcgNTYtMzIwLTMyMCAzMjAtMzIwIDU3IDU2LTIyNCAyMjRoNDg3djgwSDMxM1oiLz48L3N2Zz4=)
+}
+#next-page{
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgLTk2MCA5NjAgOTYwIiB3aWR0aD0iMjQiPjxwYXRoIGQ9Ik02NDctNDQwSDE2MHYtODBoNDg3TDQyMy03NDRsNTctNTYgMzIwIDMyMC0zMjAgMzIwLTU3LTU2IDIyNC0yMjRaIi8+PC9zdmc+)
+}
+#prev-page, #next-page{
+  background-size:70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#prev-page.inactive,
+#next-page.inactive {
+  opacity: 0.3;
+}
+
+#bookmark-popup {
+  border-radius: 5px;
+  position: absolute;
+  right: 0px;
+  padding: 25px;
+  background: white;
+  color: black;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  z-index: 2;
+}
+
+#bookmark-popup:not(.open) {
+  display: none;
+}
+#bookmark-popup #bookmark-name {
+  font-weight: 100;
+  display: block;
+}
+
+
+.browser-item {
+  background: none;
+  border: none;
+}
+.displaynone {
+  display: none;
+}
+.textedit {
+  background: none;
+  box-sizing: border-box;
+  border: none;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  padding: 10px;
+  resize: none;
+  height: calc(100vh - var(--title-height));
+  color: white;
+  margin-bottom: -5px;
+}
+#contentWrapper {
+  position: relative;
+}
+#content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#add-favorite,
+#remove-favorite {
+  padding: 0.3rem 1rem;
+  float: right;
+}
+#add-favorite {
+  background: var(--blue-5);
+  border: 1px solid var(--blue-5);
+
+  color: white;
+}
+#remove-favorite {
+  border: 1px solid gray;
+  background: none;
+  color: var(--blue-5);
+}
+#bookmark-popup.open + #bookmark-background {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.navigation {
+  padding: 10px 10px;
+  display: none;
+  background: rgb(243, 243, 243);
+  position: absolute;
+  top: var(--title-height);
+  width: var(--detail-width);
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  border-radius: 10px;
+}
+#open-navigation:not(.open) + #navigation-background {
+  display: none;
+}
+#navigation-background {
+  display: block;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  z-index: 1;
+}
+.address-control {
+  display: flex;
+  height: var(--title-height);
+}
+#bookmark:hover #bookmark-bar {
+  display: block;
+}
+#bookmark-bar {
+  display: none;
+  min-height: 5px;
+  position: absolute;
+  left: 100%;
+  top: calc(100% - 40px);
+  width: 100px;
+  background-color: rgb(254, 254, 254);
+  border-radius: 5px;
+  padding: 5px;
+}
+#favorite {
+  height: var(--title-height);
+  border: none;
+  width: 100%;
+  text-align: left;
+  margin-left: -5px;
+  margin-right: -5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  box-sizing: content-box;
+}
+#favorite:hover {
+  background-color: gray;
+}
+webview {
+  height: calc(100% - var(--title-height));
+  width: 100%;
+  display: flex;
+}
